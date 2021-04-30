@@ -12,49 +12,58 @@ import RxDataSources
 
 class ComponentListViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    //MARK:- IBOutlets -
+    @IBOutlet weak var tableView: UITableView!{
+        didSet{
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        }
+    }
 
+    //MARK:- Variables -
+    let disposeBag = DisposeBag()
+    private var items : [ComponentType] = [.coredata]
+
+    //MARK:- LifeCycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureTableView()
     }
-    
-    func configureTableView() {
-        tableView.isEditing = true
-        
-        
 
-        let animatedDataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, Event>>(configureCell: { dateSource, tableView, indexPath, event in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = "\(event.date)"
-            return cell
-        })
-        
-        managedObjectContext.rx.entities(Event.self, sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
-            .map { events in
-                [AnimatableSectionModel(model: "Section 1", items: events)]
+    //MARK:- Helper Methods-
+    private
+    func configureTableView() {
+        let dataSource = RxTableViewSectionedReloadDataSource<ComponentSections>(
+            configureCell: { dataSource, tableView, indexPath, item in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+                cell.selectionStyle = .none
+                cell.textLabel?.text = "\(indexPath.row + 1) : \(item.type.title)"
+                cell.textLabel?.font = UIFont.systemFont(ofSize: 21, weight: .medium)
+                return cell
             }
-            .bind(to: tableView.rx.items(dataSource: animatedDataSource))
-            .disposed(by: disposeBag)
- 
-        self.tableView.rx.itemDeleted.map { [unowned self] ip -> Event in
-            return try self.tableView.rx.model(at: ip)
-            }
-            .subscribe(onNext: { [unowned self] (event) in
-                do {
-                    try self.managedObjectContext.rx.delete(event)
-                } catch {
-                    print(error)
-                }
+        )
+
+        let sections = [ComponentSections(items: items.map ({ ComponentModel(type: $0) }))]
+        Observable.just(sections)
+          .bind(to: tableView.rx.items(dataSource: dataSource))
+          .disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(ComponentModel.self)
+            .asDriver()
+            .drive(onNext: { [unowned self] component in
+                self.navigate(component)
+//                var vc = RecipeViewController.initFromNib()
+//                vc.bind(to: RecipeViewModel(withRecipe: recipe))
+//                self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-        
-        animatedDataSource.canEditRowAtIndexPath = { _,_  in
-            return true
-        }
-        animatedDataSource.canMoveRowAtIndexPath = { _,_  in
-            return true
+    }
+
+    private func navigate(_ model: ComponentModel) {
+        switch model.type {
+        case .coredata:
+            let view = CoreDataListViewController.instantiateFrom(StoryBoard: .main)
+            self.navigationController?.pushViewController(view, animated: true)
+            break
         }
     }
 }
