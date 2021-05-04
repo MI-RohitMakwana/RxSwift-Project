@@ -9,6 +9,7 @@ import UIKit
 
 enum StoryBoardType: String {
     case main = "Main"
+    case coraData = "CoraData"
 }
 
 protocol Storyboarable {

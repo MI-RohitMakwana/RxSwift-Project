@@ -1,40 +1,28 @@
 //
-//  AppDelegate.swift
+//  CoreDataModel.swift
 //  RxSwift-Project
 //
-//  Created by mind-0023 on 30/04/21.
+//  Created by mind-0023 on 01/05/21.
 //
 
-import UIKit
+import Foundation
 import CoreData
+import RxCoreData
 
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class CoreDataModel {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return true
-    }
-
-    // MARK: UISceneSession Lifecycle
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
-
-    // MARK: - Core Data stack
-
+    static let shared = CoreDataModel()
+    
     lazy var applicationDocumentsDirectory: URL = {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls.last!
     }()
-    
+
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = Bundle.main.url(forResource: "Model", withExtension: "momd")!
+        let modelURL = Bundle.main.url(forResource: "RxSwift-Project", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
-    
+
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("RxCoreData.sqlite")
@@ -52,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
         }
-        
+
         return coordinator
     }()
 
@@ -63,4 +51,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return managedObjectContext
     }()
 }
-

@@ -57,21 +57,6 @@
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="47.544642857142854"/>
         </scene>
-        <!--Core Data List View Controller-->
-        <scene sceneID="FSX-tE-Rtm">
-            <objects>
-                <viewController storyboardIdentifier="CoreDataListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NIc-3u-Yt0" customClass="CoreDataListViewController" customModule="RxSwift_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2d2-Mj-553">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="DL8-DK-JR3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P6h-2t-UB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-316" y="692"/>
-        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

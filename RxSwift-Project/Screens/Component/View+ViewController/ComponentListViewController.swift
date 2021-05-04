@@ -13,17 +13,18 @@ import RxDataSources
 class ComponentListViewController: UIViewController {
 
     //MARK:- IBOutlets -
-    @IBOutlet weak var tableView: UITableView!{
+    @IBOutlet weak var tableView: UITableView! {
         didSet{
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         }
     }
 
     //MARK:- Variables -
-    let disposeBag = DisposeBag()
-    private var items : [ComponentType] = [.coredata]
+    private let disposeBag = DisposeBag()
+    private var viewModel = ComponentViewModel()
+    private let items : Observable<[ComponentType]> = Observable.from(optional: [.coredata])
 
-    //MARK:- LifeCycle -
+    //MARK:- View LifeCycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -32,6 +33,10 @@ class ComponentListViewController: UIViewController {
     //MARK:- Helper Methods-
     private
     func configureTableView() {
+
+        let input = ComponentViewModel.Input(componentTypes: items)
+        let output = viewModel.transform(input)
+
         let dataSource = RxTableViewSectionedReloadDataSource<ComponentSections>(
             configureCell: { dataSource, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -42,29 +47,24 @@ class ComponentListViewController: UIViewController {
             }
         )
 
-        let sections = [ComponentSections(items: items.map ({ ComponentModel(type: $0) }))]
-        Observable.just(sections)
-          .bind(to: tableView.rx.items(dataSource: dataSource))
-          .disposed(by: disposeBag)
+        Observable
+            .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(ComponentModel.self))
+            .bind { [unowned self] indexPath, model in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                self.navigate(model)
+            }
+            .disposed(by: disposeBag)
 
-        tableView.rx.modelSelected(ComponentModel.self)
-            .asDriver()
-            .drive(onNext: { [unowned self] component in
-                self.navigate(component)
-//                var vc = RecipeViewController.initFromNib()
-//                vc.bind(to: RecipeViewModel(withRecipe: recipe))
-//                self.navigationController?.pushViewController(vc, animated: true)
-            })
+        output.sections.drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
 
     private func navigate(_ model: ComponentModel) {
         switch model.type {
         case .coredata:
-            let view = CoreDataListViewController.instantiateFrom(StoryBoard: .main)
+            let view = CoreDataListViewController.instantiateFrom(StoryBoard: .coraData)
             self.navigationController?.pushViewController(view, animated: true)
             break
         }
     }
 }
-
