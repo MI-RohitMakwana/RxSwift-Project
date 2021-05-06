@@ -17,8 +17,22 @@ extension String {
         return self.validateString(RegexType.mobile)
     }
 
-    var isValidName: Bool {
-        return self.validateString(RegexType.name)
+    var isValidFullName: Bool {
+
+        guard self.count > 4, self.count < 20 else { return false }
+        return self.validateString(RegexType.fullname)
+    }
+    
+    var isOnlyChar: Bool {
+        return !(self.isEmpty) && self.allSatisfy { $0.isLetter || $0.isWhitespace}
+    }
+    
+    var condensed: String {
+        return replacingOccurrences(of: "[\\s\n]+", with: " ", options: .regularExpression, range: nil)
+    }
+
+    func validateLength(size: (min:Int, max:Int)) -> Bool {
+        return (size.min...size.max).contains(self.count)
     }
 
     var isEmptyField : Bool {

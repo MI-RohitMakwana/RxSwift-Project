@@ -59,9 +59,15 @@ extension AddUserViewController {
 
     private func createBinding() {
 
-        let input = AddUserViewModel.Input(fullname: fullnameTextField.rx.text.orEmpty.distinctUntilChanged(),
-                                           email: emailTextField.rx.text.orEmpty.distinctUntilChanged(),
-                                           mobile: mobileTextField.rx.text.orEmpty.distinctUntilChanged(),
+        let input = AddUserViewModel.Input(fullname: fullnameTextField.rx.text.orEmpty
+                                            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+                                            .distinctUntilChanged(),
+                                           email: emailTextField.rx.text.orEmpty
+                                            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+                                            .distinctUntilChanged(),
+                                           mobile: mobileTextField.rx.text.orEmpty
+                                            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+                                            .distinctUntilChanged(),
                                            addUser: addUserButton.rx.tap.asObservable())
         let output = viewModel.transform(input)
 
@@ -71,8 +77,11 @@ extension AddUserViewController {
         }).disposed(by: disposeBag)
 
         addUserButton.rx.tap
+            .filter({ [unowned self] _ -> Bool in
+                return self.viewModel.isValidateCredential == true
+            })
             .map { [unowned  self] _ -> User in
-                return User(fullName: self.fullnameTextField.text!,
+                return User(fullName: self.fullnameTextField.text!.condensed,
                             email: self.emailTextField.text!,
                             mobile: self.mobileTextField.text!,
                             id: id ?? UUID().uuidString,
@@ -82,5 +91,15 @@ extension AddUserViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+
+        viewModel.errorMessage.asObservable()
+            .bind { errorMessage in
+                if let msg = errorMessage, msg.count > 0 {
+                    UIAlertController
+                        .present(in: self, title: Title.Error, message: msg)
+                        .subscribe(onNext: { buttonIndex in
+                        }).disposed(by: self.disposeBag)
+                }
+            }.disposed(by: disposeBag)
     }
 }

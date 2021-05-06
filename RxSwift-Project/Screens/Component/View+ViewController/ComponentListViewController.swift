@@ -22,7 +22,7 @@ class ComponentListViewController: UIViewController {
     //MARK:- Variables -
     private let disposeBag = DisposeBag()
     private var viewModel = ComponentViewModel()
-    private let items : Observable<[ComponentType]> = Observable.from(optional: [.coredata])
+    private let items : Observable<[ComponentType]> = Observable.from(optional: [.coredata, .gallery])
 
     //MARK:- View LifeCycle -
     override func viewDidLoad() {
@@ -63,6 +63,10 @@ class ComponentListViewController: UIViewController {
         switch model.type {
         case .coredata:
             let view = CoreDataListViewController.instantiateFrom(StoryBoard: .coraData)
+            self.navigationController?.pushViewController(view, animated: true)
+            break
+        case .gallery:
+            let view = GalleryViewController.instantiateFrom(StoryBoard: .gallery)
             self.navigationController?.pushViewController(view, animated: true)
             break
         }

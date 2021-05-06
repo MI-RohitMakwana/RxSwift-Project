@@ -13,7 +13,16 @@ import RxCoreData
 
 final class AddUserViewModel {
 
+    // Fields that bind to our view's
+    let isSuccess: PublishRelay<Bool> = PublishRelay()
+    let isLoading: PublishRelay<Bool> = PublishRelay()
+    let errorMessage: PublishRelay<String?> = PublishRelay()
+
     private let disposeBag = DisposeBag()
+
+    private let fullNameViewModel = FullNameViewModel()
+    private let emailViewModel = EmailViewModel()
+    private let mobileViewModel = MobileViewModel()
 
     func transform(_ input: Input) -> Output {
 
@@ -27,39 +36,33 @@ final class AddUserViewModel {
             .startWith(false)
             .asDriver(onErrorJustReturn: false)
 
-        //        let _ = fields.asObservable()
-//            .map({ (fullname, email, mobile) -> String in
-//                if fullname.isValidName &&
-//                    email.isValidEmail &&
-//                    mobile.isValidMobile {
-//                    return ""
-//                }
-//                else {
-//                    self.error.v
-//                }
-//            })
-//            .subscribe()
-//            .disposed(by: bag)
+        input.fullname.bind(to: fullNameViewModel.value)
+            .disposed(by: disposeBag)
 
-//        let result = input.addUser.asObservable()
-//            .withLatestFrom(fields)
-//            .map({ (fullname, email, mobile) -> (String, String, String, Bool) in
-//                if fullname.isValidName &&
-//                    email.isValidEmail &&
-//                    mobile.isValidMobile {
-//                   return (fullname, email, mobile, true)
-//                }
-//                else {
-//                    self.error.onNext("Error")
-//                    return ("", "", "", false)
-//                }
-//            })
+        input.email.bind(to: emailViewModel.value)
+            .disposed(by: disposeBag)
 
-//            .filter({ (fullname, email, mobile, error) in
-//                error == true
-//            })
+        input.mobile.bind(to: mobileViewModel.value)
+            .disposed(by: disposeBag)
 
         return Output(addUserEnabled: canAddUser)
+    }
+
+    var isValidateCredential: Bool {
+        if self.fullNameViewModel.isValidField  {
+           if self.emailViewModel.isValidField  {
+               if self.mobileViewModel.isValidField  {
+                    return true
+                } else {
+                    errorMessage.accept(mobileViewModel.errorMessage)
+                }
+            } else {
+                errorMessage.accept(emailViewModel.errorMessage)
+            }
+        } else {
+            errorMessage.accept(fullNameViewModel.errorMessage)
+        }
+        return false
     }
 }
 

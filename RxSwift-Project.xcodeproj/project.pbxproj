@@ -28,6 +28,18 @@
 		06C1C3CF263D901E004FA0C4 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1C3CE263D901E004FA0C4 /* CoreDataModel.swift */; };
 		06C1C3D2263D97AB004FA0C4 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1C3D1263D97AB004FA0C4 /* AddUserViewController.swift */; };
 		06C1C3D6263D9A1D004FA0C4 /* CoraData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06C1C3D5263D9A1D004FA0C4 /* CoraData.storyboard */; };
+		06EEAE63264268C30099C104 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAE62264268C30099C104 /* EmailViewModel.swift */; };
+		06EEAE66264268E50099C104 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAE65264268E50099C104 /* Text.swift */; };
+		06EEAE6926426AA60099C104 /* MobileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAE6826426AA60099C104 /* MobileViewModel.swift */; };
+		06EEAE6C26426B2D0099C104 /* FullNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAE6B26426B2D0099C104 /* FullNameViewModel.swift */; };
+		06EEAE9D2642857A0099C104 /* Extension+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAE9C2642857A0099C104 /* Extension+UIAlertController.swift */; };
+		06EEAED62642B6680099C104 /* RxMediaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAED52642B6680099C104 /* RxMediaPicker.swift */; };
+		06EEAEDC2642BBFD0099C104 /* Gallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06EEAEDB2642BBFD0099C104 /* Gallery.storyboard */; };
+		06EEAEE42642BD6D0099C104 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAEE32642BD6D0099C104 /* GalleryViewController.swift */; };
+		06EEAEEC2642BDA60099C104 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAEEB2642BDA60099C104 /* GalleryViewModel.swift */; };
+		06EEAEF32642C2850099C104 /* GalleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAEF12642C2850099C104 /* GalleryCollectionCell.swift */; };
+		06EEAEF42642C2850099C104 /* GalleryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06EEAEF22642C2850099C104 /* GalleryCollectionCell.xib */; };
+		06EEAEF82642C3DA0099C104 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEAEF72642C3DA0099C104 /* GalleryModel.swift */; };
 		A51A2ED3C5B75CDACEAFE7A3 /* Pods_RxSwift_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D73FB7E9D3F49EE7C8E69FD /* Pods_RxSwift_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +67,18 @@
 		06C1C3CE263D901E004FA0C4 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		06C1C3D1263D97AB004FA0C4 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		06C1C3D5263D9A1D004FA0C4 /* CoraData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoraData.storyboard; sourceTree = "<group>"; };
+		06EEAE62264268C30099C104 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		06EEAE65264268E50099C104 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		06EEAE6826426AA60099C104 /* MobileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewModel.swift; sourceTree = "<group>"; };
+		06EEAE6B26426B2D0099C104 /* FullNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNameViewModel.swift; sourceTree = "<group>"; };
+		06EEAE9C2642857A0099C104 /* Extension+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIAlertController.swift"; sourceTree = "<group>"; };
+		06EEAED52642B6680099C104 /* RxMediaPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMediaPicker.swift; sourceTree = "<group>"; };
+		06EEAEDB2642BBFD0099C104 /* Gallery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gallery.storyboard; sourceTree = "<group>"; };
+		06EEAEE32642BD6D0099C104 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		06EEAEEB2642BDA60099C104 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		06EEAEF12642C2850099C104 /* GalleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionCell.swift; sourceTree = "<group>"; };
+		06EEAEF22642C2850099C104 /* GalleryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionCell.xib; sourceTree = "<group>"; };
+		06EEAEF72642C3DA0099C104 /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
 		1D73FB7E9D3F49EE7C8E69FD /* Pods_RxSwift_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		447DF1EDE267E66388339885 /* Pods-RxSwift-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift-Project.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift-Project/Pods-RxSwift-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		CE27F1B2494418CD76B219E9 /* Pods-RxSwift-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift-Project.release.xcconfig"; path = "Target Support Files/Pods-RxSwift-Project/Pods-RxSwift-Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +126,7 @@
 				06AF1096263C1531001ACDB0 /* Component */,
 				06AF1088263C10DA001ACDB0 /* CoreData */,
 				0637A9B9263E8A1C0076CB04 /* Common */,
+				06EEAEE72642BD7B0099C104 /* Gallery */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -151,9 +176,12 @@
 		069A86F3263C29DF008F8A60 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				06EEAED82642B79E0099C104 /* RxMediaPicker */,
 				069A86DE263C2761008F8A60 /* Storyboarable.swift */,
 				0684F4C3263FEE6300A45304 /* String+Extension.swift */,
 				066BD296263FC4D400EB24B5 /* RegexType.swift */,
+				06EEAE65264268E50099C104 /* Text.swift */,
+				06EEAE9F264285970099C104 /* Extensions */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -191,6 +219,9 @@
 			children = (
 				0637A99F263E87750076CB04 /* AddUserViewModel.swift */,
 				0665B14C26402A1B00D0D398 /* CoreDataUserListViewModel.swift */,
+				06EEAE62264268C30099C104 /* EmailViewModel.swift */,
+				06EEAE6826426AA60099C104 /* MobileViewModel.swift */,
+				06EEAE6B26426B2D0099C104 /* FullNameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,8 +242,69 @@
 				064F8960263BFDFB00C6F508 /* Main.storyboard */,
 				06C1C3D5263D9A1D004FA0C4 /* CoraData.storyboard */,
 				064F8965263BFDFE00C6F508 /* LaunchScreen.storyboard */,
+				06EEAEDB2642BBFD0099C104 /* Gallery.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		06EEAE9F264285970099C104 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAE9C2642857A0099C104 /* Extension+UIAlertController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		06EEAED82642B79E0099C104 /* RxMediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAED52642B6680099C104 /* RxMediaPicker.swift */,
+			);
+			path = RxMediaPicker;
+			sourceTree = "<group>";
+		};
+		06EEAEE72642BD7B0099C104 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAEE92642BD8B0099C104 /* View+ViewController */,
+				06EEAEEE2642BDAD0099C104 /* ViewModel */,
+				06EEAEFA2642C3FF0099C104 /* Model */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		06EEAEE92642BD8B0099C104 /* View+ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAEE32642BD6D0099C104 /* GalleryViewController.swift */,
+				06EEAEFC2642C6940099C104 /* Cell */,
+			);
+			path = "View+ViewController";
+			sourceTree = "<group>";
+		};
+		06EEAEEE2642BDAD0099C104 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAEEB2642BDA60099C104 /* GalleryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06EEAEFA2642C3FF0099C104 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAEF72642C3DA0099C104 /* GalleryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06EEAEFC2642C6940099C104 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				06EEAEF12642C2850099C104 /* GalleryCollectionCell.swift */,
+				06EEAEF22642C2850099C104 /* GalleryCollectionCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		0F2A2F3DDB4D254510EFCCF1 /* Frameworks */ = {
@@ -291,7 +383,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06EEAEF42642C2850099C104 /* GalleryCollectionCell.xib in Resources */,
 				064F8967263BFDFE00C6F508 /* LaunchScreen.storyboard in Resources */,
+				06EEAEDC2642BBFD0099C104 /* Gallery.storyboard in Resources */,
 				06C1C3D6263D9A1D004FA0C4 /* CoraData.storyboard in Resources */,
 				064F8964263BFDFE00C6F508 /* Assets.xcassets in Resources */,
 				064F8962263BFDFB00C6F508 /* Main.storyboard in Resources */,
@@ -348,20 +442,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				0684F4C4263FEE6300A45304 /* String+Extension.swift in Sources */,
+				06EEAEF82642C3DA0099C104 /* GalleryModel.swift in Sources */,
 				0637A9A7263E89510076CB04 /* ComponentViewModel.swift in Sources */,
 				06C1C3D2263D97AB004FA0C4 /* AddUserViewController.swift in Sources */,
 				06AF1090263C1136001ACDB0 /* CoreDataListModel.swift in Sources */,
 				06AF1099263C1540001ACDB0 /* ComponentModel.swift in Sources */,
 				0665B12F26400DAD00D0D398 /* User.swift in Sources */,
+				06EEAED62642B6680099C104 /* RxMediaPicker.swift in Sources */,
+				06EEAE66264268E50099C104 /* Text.swift in Sources */,
 				064F895F263BFDFB00C6F508 /* ComponentListViewController.swift in Sources */,
 				0637A9AD263E89790076CB04 /* ViewModelProtocol.swift in Sources */,
 				0665B14D26402A1B00D0D398 /* CoreDataUserListViewModel.swift in Sources */,
+				06EEAEEC2642BDA60099C104 /* GalleryViewModel.swift in Sources */,
 				0637A9A0263E87750076CB04 /* AddUserViewModel.swift in Sources */,
 				064F895B263BFDFB00C6F508 /* AppDelegate.swift in Sources */,
+				06EEAEF32642C2850099C104 /* GalleryCollectionCell.swift in Sources */,
+				06EEAE9D2642857A0099C104 /* Extension+UIAlertController.swift in Sources */,
+				06EEAE6926426AA60099C104 /* MobileViewModel.swift in Sources */,
+				06EEAE6C26426B2D0099C104 /* FullNameViewModel.swift in Sources */,
 				069A871E263C4A58008F8A60 /* RxSwift-Project.xcdatamodeld in Sources */,
 				066BD297263FC4D400EB24B5 /* RegexType.swift in Sources */,
+				06EEAE63264268C30099C104 /* EmailViewModel.swift in Sources */,
 				06AF1086263C10D2001ACDB0 /* CoreDataListViewController.swift in Sources */,
 				064F895D263BFDFB00C6F508 /* SceneDelegate.swift in Sources */,
+				06EEAEE42642BD6D0099C104 /* GalleryViewController.swift in Sources */,
 				06C1C3CF263D901E004FA0C4 /* CoreDataModel.swift in Sources */,
 				069A86DF263C2761008F8A60 /* Storyboarable.swift in Sources */,
 			);

@@ -10,11 +10,17 @@ import RxDataSources
 
 enum ComponentType {
     case coredata
+    case gallery
 }
 
 extension ComponentType {
     var title: String {
-        return "Core Data"
+        switch self {
+        case .coredata:
+            return "Core Data"
+        case .gallery:
+            return "Gallery"
+        }
     }
 }
 

@@ -10,6 +10,8 @@ import UIKit
 enum StoryBoardType: String {
     case main = "Main"
     case coraData = "CoraData"
+    case gallery = "Gallery"
+
 }
 
 protocol Storyboarable {
@@ -17,7 +19,6 @@ protocol Storyboarable {
 }
 
 extension Storyboarable where Self: UIViewController {
-
     static func instantiateFrom(StoryBoard storyBoard: StoryBoardType) -> Self {
         let fullname = NSStringFromClass(self)
         let className = fullname.components(separatedBy: ".")[1]
